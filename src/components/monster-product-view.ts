@@ -11,7 +11,7 @@ import type { Color } from "../types/color-types";
 const POKE_API_URL = "https://pokeapi.co/api/v2";
 
 const monsterEndpoint = `${POKE_API_URL}/pokemon`;
-const typeEndpoint = `${POKE_API_URL}/type`;
+const typeEndpoint = `${POKE_API_URL}/type?limit=100`;
 
 type MonsterDetails = {
   name: string;
