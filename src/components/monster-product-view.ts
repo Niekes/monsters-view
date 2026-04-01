@@ -189,7 +189,7 @@ export class MonsterProductView extends LitElement {
                           : html`<img
                               slot="media"
                               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII"
-                              class="w-full h-full object-cover fiter blur-2xl"
+                              class="w-full h-full object-cover filter blur-2xl"
                               alt="${monster.name} image"
                             />`}
                       </h2>
