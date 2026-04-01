@@ -161,7 +161,11 @@ export class MonsterProductView extends LitElement {
             .getLabel=${(type: Type) => type.name}
             .getValue=${(type: Type) => type.name}
           >
-            <h2 slot="title" class="text-slate-500 text-md font-light">
+            <h2
+              slot="title"
+              class="text-slate-500 text-md font-light"
+              title="Filter by type"
+            >
               Filter by type
             </h2>
           </vi-filter-bar>
@@ -190,7 +194,11 @@ export class MonsterProductView extends LitElement {
                             />`}
                       </h2>
 
-                      <h2 slot="header" class="capitalize font-bold truncate">
+                      <h2
+                        slot="header"
+                        class="capitalize font-bold truncate"
+                        title="${monster.name}"
+                      >
                         ${monster.name}
                       </h2>
 
