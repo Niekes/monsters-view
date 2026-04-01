@@ -1,1 +1,143 @@
-Coming soon ...
+import mockImg from "../assets/mockup.jpg";
+
+# Monster
+
+Product View – Technical Approach
+
+## 1. Goal
+
+The goal was to transform a given mockup into a working frontend solution using **Lit**, while focusing on:
+
+- Fast delivery (≤ 4 hours)
+- Clear structure
+- Extensibility for client feedback
+
+---
+
+## 2. From Mockup to Mental Model
+
+From the mockup, I identified reusable design system elements:
+
+- Filter Bar
+- Button
+- Card
+- Badge
+
+This led to a **component-driven architecture**, where UI elements are reusable and independent.
+
+<img src={mockImg} alt="A representation of the design system" />
+
+---
+
+## 3. Architecture
+
+I followed a **Container / Presenter Pattern**:
+
+### Container
+
+`<monster-product-view>`
+
+- Handles data fetching (API)
+- Transforms data into UI-friendly format
+- Manages state (filters, monsters)
+
+### Presenter Components
+
+- `<vi-card>`
+- `<vi-badge>`
+- `<vi-button>`
+- `<vi-filter-bar>`
+
+These are:
+
+- Stateless (or minimally stateful)
+- Reusable
+- Configurable via props/functions
+
+---
+
+## 4. Design System Approach
+
+I created a small design system to:
+
+- Ensure **reusability**
+- Allow **fast iteration during client feedback**
+- Keep UI consistent
+
+Example:
+
+- Filter logic injected via functions (`getLabel`, `getValue`)
+- Variants and sizes configurable
+
+---
+
+## 5. Design Principles
+
+I focused on:
+
+- **Single Responsibility Principle**
+- **Open/Closed Principle**
+- **Dependency Injection**
+  → e.g. behavior passed via functions instead of hardcoding
+
+Additionally:
+
+- Adaptive patterns for flexible UI behavior
+- Slot-based composition for maximum control
+- I kept the number of components minimal to avoid overengineering and focus on delivery and clarity
+
+---
+
+## 6. Trade-offs & Decisions
+
+### What I optimized for:
+
+- Delivering a working solution quickly
+- Covering all required features from the mockup
+- Keeping the system extensible
+
+### What I intentionally did NOT optimize (yet):
+
+- Performance (e.g. many API calls)
+- Advanced caching
+- Virtualization
+- Cards are designed to be extendable and can be made clickable (e.g. wrapping with anchor or interactive footer actions)
+
+---
+
+## 7. Future Improvements
+
+If this were extended, I would focus on:
+
+- **List Virtualization**
+  - Render only visible items
+  - Lazy-load monster details
+
+- **Caching**
+  - Avoid refetching already loaded monsters
+
+- **Separation of Data Layer**
+  - Move API logic into a dedicated service
+
+---
+
+## 8. Summary
+
+- Clear separation between data and UI
+- Reusable component system
+- Fast iteration capability for client collaboration
+- Solid foundation for scaling and performance improvements
+
+---
+
+## 9. Accessibility
+
+- Semantic HTML where possible
+- Proper alt texts for images
+- Consideration for focus states and ARIA attributes
+- Keyboard accessibility prepared, but not fully implemented yet (e.g. arrow navigation, focus management)
+
+## 10. Security Considerations
+
+- No direct HTML injection (safe templating via Lit)
+- External API usage kept read-only
