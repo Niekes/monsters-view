@@ -1,150 +1,114 @@
 import mockImg from "../assets/mockup.jpg";
 
-# Monster
-
-Product View – Technical Approach
+# Monster Product View – Overview
 
 ## 1. Goal
 
-The goal was to transform a given mockup into a working frontend solution using **Lit**, while focusing on:
+Deliver a user-focused product view that:
 
-- Fast delivery (≤ 4 hours)
-- Clear structure
-- Extensibility for client feedback
-- Layout prioritizes monster visibility to align with the requirement that monsters are the primary focus
+- Lets users quickly browse and discover monsters
+- Enables intuitive filtering by type
+- Supports client-driven updates and future requirements
+- Prioritizes clear, usable layout for immediate comprehension
 
 ---
 
 ## 2. From Mockup to Mental Model
 
-From the mockup, I identified reusable design system elements:
+From the mockup, we identified key user-facing elements:
 
 - Filter Bar
-- Button
-- Card
+- Action elements (buttons)
+- Monster Card
 - Badge
 
-This led to a **component-driven architecture**, where UI elements are reusable and independent.
+These elements are organized in a **component-driven approach**, ensuring consistency, clarity, and predictable behavior for the user.
 
 <img src={mockImg} alt="A representation of the design system" />
 
 ---
 
-## 3. Architecture
+## 4. Design Decisions
 
-I followed a **Container / Presenter Pattern**:
-
-### Container
-
-`<monster-product-view>`
-
-- Handles data fetching (API)
-- Transforms data into UI-friendly format
-- Manages state (filters, monsters)
-
-### Presenter Components
-
-- `<vi-card>`
-- `<vi-badge>`
-- `<vi-button>`
-- `<vi-filter-bar>`
-
-These are:
-
-- Reusable
-- Configurable via props/functions
+- Buttons used for filter options to enable rapid iteration; could be converted to checkboxes/radio buttons if preferred for clarity
+- Cards designed to be clickable or linkable for direct interaction, example [here](./?path=/story/components-vi-card--with-buttons)
+- Minimal component set to accelerate delivery while keeping UX clear
 
 ---
 
-## 4. Design System Approach
+## 5. Trade-offs
 
-I created a small design system to:
+### Prioritized for user impact
 
-- Ensure **reusability**
-- Allow **fast iteration during client feedback**
-- Keep UI consistent
+- Complete coverage of mockup features
+- Clear and accessible interface
+- Reusable, configurable components
 
-Example:
+### Deferred considerations
 
-- Filter logic injected via functions (`getLabel`, `getValue`)
-- Variants and sizes configurable
-
----
-
-## 5. Design Principles
-
-I focused on:
-
-- **Single Responsibility Principle**
-- **Open/Closed Principle**
-- **Dependency Injection**
-  → e.g. behavior passed via functions instead of hardcoding
-
-Additionally:
-
-- Adaptive patterns for flexible UI behavior
-- Slot-based composition for maximum control
-- I kept the number of components minimal to avoid overengineering and focus on delivery and clarity
+- Advanced performance optimizations
+- Virtualization for very large datasets
+- Complex caching or offline handling
+- Exact checkbox/radio behavior in filter bar (simplified for delivery speed)
 
 ---
 
-## 6. Trade-offs & Decisions
+## 6. Future Enhancements
 
-### What I optimized for:
-
-- Delivering a working solution quickly
-- Covering all required features from the mockup
-- Keeping the system extensible
-
-### What I intentionally did NOT optimize (yet):
-
-- Performance (e.g. many API calls due to simplicity-first approach)
-- Advanced caching (@tanstack/query)
-- Virtualization
-- Cards are designed to be extendable and linkable (e.g. wrapping with anchor or interactive footer actions)
-- Filter bar uses buttons instead of checkboxes/radios for simplicity; easily replaceable if needed
+- **List virtualization** for large datasets
+- **Lazy-loading monster details** to reduce initial load
+- **Caching** to minimize redundant API requests
+- **Runtime data validation** (e.g., Zod) to ensure correct data structure
+- Optional: refine filter bar to checkbox/radio for clearer UX
 
 ---
 
-## 7. Future Improvements
+## 7. Accessibility & UX
 
-If this were extended, I would focus on:
-
-- **List Virtualization**
-  - Render only visible items
-  - Lazy-load monster details
-
-- **Caching**
-  - Avoid refetching already loaded monsters
-
-- **Separation of Data Layer**
-  - Move API logic into a dedicated service
-
-- **Runtime Data Validation**
-  - Introduce schema validation (e.g. Zod)
-  - Ensure API responses are validated at runtime
-  - Improve robustness against malformed or unexpected data
+- Semantic HTML
+- Proper image alt texts
+- Legible layout with high contrast
+- Prepared for further accessibility enhancements (focus management, ARIA attributes)
 
 ---
 
 ## 8. Summary
 
-- Clear separation between data and UI
-- Reusable component system
-- Fast iteration capability for client collaboration
-- Solid foundation for scaling and performance improvements
+- UX-first solution with clear, predictable behavior
+- Reusable and configurable components
+- Fast iteration and adaptation for client feedback
+- Foundation ready for performance and accessibility improvements
 
 ---
 
-## 9. Accessibility
+# Client Questions Checklist
 
-- Semantic HTML where possible
-- Basic accessibility checks via Storybook
-- Proper alt texts for images
-- Consideration for focus states and ARIA attributes
-- Keyboard accessibility prepared, but not fully implemented yet (e.g. arrow navigation, focus management)
+## 1. General
 
-## 10. Security Considerations
+- How should the rank if the monsters be chosen? (e.g., most-sold, newest, featured)
+- Which monster information must be displayed? (e.g., name, types, image, abilities)
+- There’s a small number in the mockup (e.g., `#1`, `#2`). What does this represent?
 
-- No direct HTML injection (safe templating via Lit)
-- External API usage kept read-only
+## 2. UX / UI
+
+- Should the list scroll or be paginated? (infinite scroll vs pages)
+- Which interactions should monster cards support? (clickable, detail page, tooltips)
+- Are there specific mobile vs desktop requirements?
+- Should optional headlines or sections be configurable?
+- Is the filter a single-select or or a multi-select filter?
+- What should happen when the browser resizes or the page gets opened on a mobile device?
+
+## 3. Design & Branding
+
+- Are colors/types dynamic or fixed?
+- For filter type colors: should we assign them randomly, select them ourselves, or provide the colors from the client?
+
+## 4. Performance & Scalability
+
+- What is the expected dataset size? (100 vs 1000+ monsters → affects virtualization/caching)
+- Are there specific performance or load-time requirements?
+
+## 5. Accessibility & Security
+
+- Any accessibility requirements? (screen reader, keyboard navigation, focus management, contrast)
+- Should external API data be validated or sanitized?
