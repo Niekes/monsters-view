@@ -11,6 +11,7 @@ The goal was to transform a given mockup into a working frontend solution using 
 - Fast delivery (≤ 4 hours)
 - Clear structure
 - Extensibility for client feedback
+- Layout prioritizes monster visibility to align with the requirement that monsters are the primary focus
 
 ---
 
@@ -97,10 +98,10 @@ Additionally:
 
 ### What I intentionally did NOT optimize (yet):
 
-- Performance (e.g. many API calls)
+- Performance (e.g. many API calls due to simplicity-first approach)
 - Advanced caching (@tanstack/query)
 - Virtualization
-- Cards are designed to be extendable and can be made clickable (e.g. wrapping with anchor or interactive footer actions)
+- Cards are designed to be extendable and linkable (e.g. wrapping with anchor or interactive footer actions)
 
 ---
 
@@ -137,7 +138,7 @@ If this were extended, I would focus on:
 ## 9. Accessibility
 
 - Semantic HTML where possible
-- Storybook's accessibility tests pass
+- Basic accessibility checks via Storybook
 - Proper alt texts for images
 - Consideration for focus states and ARIA attributes
 - Keyboard accessibility prepared, but not fully implemented yet (e.g. arrow navigation, focus management)
