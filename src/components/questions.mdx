@@ -1,4 +1,87 @@
-# Monster Product View – Client Questions Checklist
+import mockImg from "../assets/mockup.jpg";
+
+# Monster Product View – Overview
+
+## 1. Goal
+
+Deliver a user-focused product view that:
+
+- Lets users quickly browse and discover monsters
+- Enables intuitive filtering by type
+- Supports client-driven updates and future requirements
+- Prioritizes clear, usable layout for immediate comprehension
+
+---
+
+## 2. From Mockup to Mental Model
+
+From the mockup, we identified key user-facing elements:
+
+- Filter Bar
+- Action elements (buttons)
+- Monster Card
+- Badge
+
+These elements are organized in a **component-driven approach**, ensuring consistency, clarity, and predictable behavior for the user.
+
+<img src={mockImg} alt="A representation of the design system" />
+
+---
+
+## 4. Design Decisions
+
+- Buttons used for filter options to enable rapid iteration; could be converted to checkboxes/radio buttons if preferred for clarity
+- Cards designed to be clickable or linkable for direct interaction, example [here](./?path=/story/components-vi-card--with-buttons)
+- Minimal component set to accelerate delivery while keeping UX clear
+
+---
+
+## 5. Trade-offs
+
+### Prioritized for user impact
+
+- Complete coverage of mockup features
+- Clear and accessible interface
+- Reusable, configurable components
+
+### Deferred considerations
+
+- Advanced performance optimizations
+- Virtualization for very large datasets
+- Complex caching or offline handling
+- Exact checkbox/radio behavior in filter bar (simplified for delivery speed)
+
+---
+
+## 6. Future Enhancements
+
+- **List virtualization** for large datasets
+- **Lazy-loading monster details** to reduce initial load
+- **Caching** to minimize redundant API requests
+- **Runtime data validation** (e.g., Zod) to ensure correct data structure
+- Optional: refine filter bar to checkbox/radio for clearer UX
+
+---
+
+## 7. Accessibility & UX
+
+- Semantic HTML
+- Proper image alt texts
+- Legible layout with high contrast
+- Prepared for further accessibility enhancements (focus management, ARIA attributes)
+
+---
+
+## 8. Summary
+
+- UX-first solution with clear, predictable behavior
+- Reusable and configurable components
+- Fast iteration and adaptation for client feedback
+- Foundation ready for performance and accessibility improvements
+
+---
+
+# Client Questions Checklist
 
 ## 1. General
 
